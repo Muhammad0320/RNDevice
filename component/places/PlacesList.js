@@ -1,4 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
+import PlacesItem from "./placesItem";
 
 function PlacesList({ places }) {
   if (!places.length) {
@@ -12,7 +13,13 @@ function PlacesList({ places }) {
     );
   }
 
-  return <FlatList data={places} />;
+  return (
+    <FlatList
+      data={places}
+      renderItem={({ item }) => <PlacesItem place={item} />}
+      keyExtractor={(item) => item.id}
+    />
+  );
 }
 
 export default PlacesList;
