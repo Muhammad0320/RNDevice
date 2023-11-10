@@ -1,6 +1,7 @@
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../utils/color";
 import { useState } from "react";
+import ImagePicker from "../component/places/ImagePicker";
 
 function AddPlaces() {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -19,6 +20,7 @@ function AddPlaces() {
           value={enteredTitle}
         />
       </View>
+      <ImagePicker />
     </ScrollView>
   );
 }
