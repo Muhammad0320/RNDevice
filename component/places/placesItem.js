@@ -1,6 +1,6 @@
 import { Image, Pressable, Text, View } from "react-native";
 
-function placesItem({ place, onPress }) {
+function PlacesItem({ place, onPress }) {
   const { imageUri, address, title } = place;
 
   return (
@@ -15,4 +15,4 @@ function placesItem({ place, onPress }) {
   );
 }
 
-export default placesItem;
+export default PlacesItem;
