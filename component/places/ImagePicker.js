@@ -48,14 +48,12 @@ function ImagePicker() {
   let preview = <Text> No image is taken yet </Text>;
 
   if (previewImage) {
-    preview = <Image source={{ uri: previewImage }} />;
+    preview = <Image source={{ uri: previewImage }} style={styles.image} />;
   }
 
   return (
     <View>
-      <View>
-        <Text> Odeh </Text>
-      </View>
+      <View style={styles.preview}>{preview}</View>
 
       <Button title="Take Image" onPress={handleTakeImage} />
     </View>
