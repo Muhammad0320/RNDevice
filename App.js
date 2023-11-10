@@ -1,20 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
+import IconButton from "./component/ui/IconButton";
+import { Colors } from "./utils/color";
+import AllPlaces from "./screens/AllPlaces";
+import AddPlaces from "./screens/AddPlaces";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar style="dark" />
+
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={({ navigation }) => ({
+            headerRight: ({ tintColor }) => (
+              <IconButton
+                icon="add"
+                size={24}
+                color={tintColor}
+                onPress={() => navigation("AddPlace")}
+              />
+            ),
+            contentStyle: { backgroundColor: Colors.gray700 },
+            headerTintColor: Colors.gray700,
+            headerStyle: { backgroundColor: Colors.primary500 },
+          })}
+        >
+          <Stack.Screen
+            name="AllPlaces"
+            component={AllPlaces}
+            options={{ title: "Your favourite places" }}
+          />
+          <Stack.Screen
+            name="AddPlace"
+            component={AddPlaces}
+            options={{ title: "Add a new place" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
