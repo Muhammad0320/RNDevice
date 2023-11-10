@@ -1,7 +1,7 @@
-import { View } from "react-native";
+import PlacesList from "../component/places/PlacesList";
 
 function AllPlaces() {
-  return <View></View>;
+  return <PlacesList />;
 }
 
 export default AllPlaces;
