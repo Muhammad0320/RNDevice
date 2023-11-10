@@ -3,7 +3,7 @@ import PlacesItem from "./PlacesItem";
 import { Colors } from "../../utils/color";
 
 function PlacesList({ places }) {
-  if (!places.length) {
+  if (!places?.length) {
     return (
       <View style={styles.fallbackContainer}>
         <Text style={styles.fallbackText}>

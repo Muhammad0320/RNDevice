@@ -15,15 +15,7 @@ export default function App() {
 
       <NavigationContainer>
         <Stack.Navigator
-          screenOptions={({ navigation }) => ({
-            headerRight: ({ tintColor }) => (
-              <IconButton
-                icon="add"
-                size={24}
-                color={tintColor}
-                onPress={() => navigation("AddPlace")}
-              />
-            ),
+          screenOptions={({}) => ({
             contentStyle: { backgroundColor: Colors.gray700 },
             headerTintColor: Colors.gray700,
             headerStyle: { backgroundColor: Colors.primary500 },
@@ -32,7 +24,17 @@ export default function App() {
           <Stack.Screen
             name="AllPlaces"
             component={AllPlaces}
-            options={{ title: "Your favourite places" }}
+            options={({ navigation }) => ({
+              title: "Your favourite places",
+              headerRight: ({ tintColor }) => (
+                <IconButton
+                  icon="add"
+                  size={24}
+                  color={tintColor}
+                  onPress={() => navigation.navigate("AddPlace")}
+                />
+              ),
+            })}
           />
           <Stack.Screen
             name="AddPlace"
