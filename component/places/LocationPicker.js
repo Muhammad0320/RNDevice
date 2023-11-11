@@ -1,8 +1,27 @@
 import { StyleSheet, View } from "react-native";
 import { Colors } from "../../utils/color";
+import OutlinedButton from "../ui/OutLinedButton";
 
 function LocationPicker() {
-  return <View></View>;
+  const locatUserHandler = () => {};
+
+  const pickOnMapHandler = () => {};
+
+  return (
+    <View>
+      <View style={styles.previewContainer}> </View>
+      <View>
+        <OutlinedButton icon="location" onPress={locatUserHandler}>
+          {" "}
+          Locate User{" "}
+        </OutlinedButton>
+        <OutlinedButton icon="map" onPress={pickOnMapHandler}>
+          {" "}
+          Pick on Map{" "}
+        </OutlinedButton>
+      </View>
+    </View>
+  );
 }
 
 export default LocationPicker;
