@@ -10,7 +10,7 @@ import { useState } from "react";
 import getLocationPreview from "../../utils/location";
 
 function LocationPicker() {
-  const [currentLocation, setCurrentLocation] = useState({});
+  const [currentLocation, setCurrentLocation] = useState(null);
 
   const [locationPermissioninfo, requestPermission] =
     useForegroundPermissions();
@@ -64,6 +64,7 @@ function LocationPicker() {
         source={{
           uri: getLocationPreview(currentLocation.lat, currentLocation.lng),
         }}
+        style={styles.image}
       />
     );
   }
@@ -109,5 +110,11 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.gray700,
     fontSize: 14,
+  },
+
+  image: {
+    height: "100%",
+    width: "100%",
+    objectFit: "cover",
   },
 });
