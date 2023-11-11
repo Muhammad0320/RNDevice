@@ -2,6 +2,7 @@ import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../utils/color";
 import { useState } from "react";
 import ImagePicker from "../component/places/ImagePicker";
+import LocationPicker from "../component/places/LocationPicker";
 
 function AddPlaces() {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -21,6 +22,7 @@ function AddPlaces() {
         />
       </View>
       <ImagePicker />
+      <LocationPicker />
     </ScrollView>
   );
 }
