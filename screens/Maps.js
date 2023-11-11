@@ -1,3 +1,4 @@
+import { StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 
 function Maps() {
@@ -10,7 +11,17 @@ function Maps() {
     longitudeDelta: 0.0421,
   };
 
-  return <MapView initialRegion={region}> </MapView>;
+  return (
+    <MapView style={styles.image} initialRegion={region}>
+      {" "}
+    </MapView>
+  );
 }
 
 export default Maps;
+
+const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+  },
+});
