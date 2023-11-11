@@ -5,6 +5,7 @@ import {
 } from "expo-image-picker";
 import { useState } from "react";
 import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
+import { Colors } from "../../utils/color";
 
 function ImagePicker() {
   const [cameraPermisssionInfo, requestPermission] = useCameraPermissions();
@@ -66,12 +67,13 @@ const styles = StyleSheet.create({
   preview: {
     flex: 1,
     justifyContent: "center",
-    alignContent: "center",
+    alignItems: "center",
     width: "100%",
-    height: 100,
+    height: 150,
     marginVertical: 10,
     borderRadius: 5,
     overflow: "hidden",
+    backgroundColor: Colors.primary200,
   },
 
   image: {
