@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
 
   textIcon: {
     flex: 1,
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     columnGap: 6,

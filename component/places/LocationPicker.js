@@ -47,24 +47,31 @@ function LocationPicker() {
       lat: location.coords.latitude,
       lng: location.coords.longitude,
     });
+
+    console.log(currentLocation);
   };
 
   const pickOnMapHandler = () => {};
 
+  let locationPreview = (
+    <Text style={styles.text}> No picked location yet! </Text>
+  );
+
+  if (currentLocation) {
+    console.log(getLocationPreview(currentLocation.lat, currentLocation.lng));
+    locationPreview = (
+      <Image
+        source={{
+          uri: getLocationPreview(currentLocation.lat, currentLocation.lng),
+        }}
+      />
+    );
+  }
+
   return (
     <View>
-      <View style={styles.previewContainer}>
-        {currentLocation ? (
-          <Image
-            source={{
-              uri: getLocationPreview(currentLocation.lat, currentLocation.lng),
-            }}
-          />
-        ) : (
-          <Text> No picked location yet! </Text>
-        )}
-      </View>
-      <View>
+      <View style={styles.previewContainer}>{locationPreview}</View>
+      <View style={styles.buttonContainer}>
         <OutlinedButton icon="location" onPress={locateUserHandler}>
           {" "}
           Locate User{" "}
@@ -85,17 +92,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.primary500,
+    backgroundColor: Colors.primary200,
     width: "100%",
     height: 200,
-    marginVertical: 8,
+    marginVertical: 12,
     borderRadius: 6,
   },
 
   buttonContainer: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+  },
+
+  text: {
+    color: Colors.gray700,
+    fontSize: 14,
   },
 });
