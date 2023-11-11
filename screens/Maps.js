@@ -21,6 +21,35 @@ function Maps({ navigation }) {
     setSelectedLocation({ latitude, longitude });
   };
 
+  const handlePickedLocation = useCallback(
+    () => () => {
+      if (!selectedLocation) {
+        Alert.alert(
+          "No location picked!",
+          "You have to pick a location - by tapping on the map - first"
+        );
+
+        return;
+      }
+
+      navigation.navigate("AddPlace", { ...selectedLocation });
+    },
+    [navigation, selectedLocation]
+  );
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: ({ tintColor }) => (
+        <IconButton
+          icon="save"
+          color={tintColor}
+          size={24}
+          onPress={handlePickedLocation}
+        />
+      ),
+    });
+  }, [navigation, handlePickedLocation]);
+
   return (
     <MapView
       style={styles.image}
@@ -33,35 +62,6 @@ function Maps({ navigation }) {
     </MapView>
   );
 }
-
-const handlePickedLocation = useCallback(
-  () => () => {
-    if (!selectedLocation) {
-      Alert.alert(
-        "No location picked!",
-        "You have to pick a location - by tapping on the map - first"
-      );
-
-      return;
-    }
-
-    navigation.navigate("AddPlace", { ...selectedLocation });
-  },
-  [navigation, selectedLocation]
-);
-
-useLayoutEffect(() => {
-  navigation.setOptions({
-    headerRight: ({ tintColor }) => (
-      <IconButton
-        icon="save"
-        color={tintColor}
-        size={24}
-        onPress={handlePickedLocation}
-      />
-    ),
-  });
-}, [navigation, handlePickedLocation]);
 
 export default Maps;
 
