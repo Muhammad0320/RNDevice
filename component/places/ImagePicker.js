@@ -6,6 +6,7 @@ import {
 import { useState } from "react";
 import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../utils/color";
+import OutlinedButton from "../ui/OutLinedButton";
 
 function ImagePicker() {
   const [cameraPermisssionInfo, requestPermission] = useCameraPermissions();
@@ -56,7 +57,10 @@ function ImagePicker() {
     <View>
       <View style={styles.preview}>{preview}</View>
 
-      <Button title="Take Image" onPress={handleTakeImage} />
+      <OutlinedButton onPress={handleTakeImage} icon={"camera"}>
+        {" "}
+        Take image{" "}
+      </OutlinedButton>
     </View>
   );
 }
