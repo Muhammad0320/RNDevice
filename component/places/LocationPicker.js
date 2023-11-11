@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, View } from "react-native";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../utils/color";
 import OutlinedButton from "../ui/OutLinedButton";
 import {
@@ -6,8 +6,12 @@ import {
   getCurrentPositionAsync,
   useForegroundPermissions,
 } from "expo-location";
+import { useState } from "react";
+import getLocationPreview from "../../utils/location";
 
 function LocationPicker() {
+  const [currentLocation, setCurrentLocation] = useState({});
+
   const [locationPermissioninfo, requestPermission] =
     useForegroundPermissions();
 
@@ -39,14 +43,27 @@ function LocationPicker() {
 
     const location = await getCurrentPositionAsync();
 
-    console.log(location);
+    setCurrentLocation({
+      lat: location.coords.latitude,
+      lng: location.coords.longitude,
+    });
   };
 
   const pickOnMapHandler = () => {};
 
   return (
     <View>
-      <View style={styles.previewContainer}> </View>
+      <View style={styles.previewContainer}>
+        {currentLocation ? (
+          <Image
+            source={{
+              uri: getLocationPreview(currentLocation.lat, currentLocation.lng),
+            }}
+          />
+        ) : (
+          <Text> No picked location yet! </Text>
+        )}
+      </View>
       <View>
         <OutlinedButton icon="location" onPress={locateUserHandler}>
           {" "}
