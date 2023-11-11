@@ -1,6 +1,6 @@
 import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../utils/color";
-import OutlinedButton from "../ui/OutLinedButton";
+import OutlinedButton from "../ui/OutlinedButton";
 import {
   PermissionStatus,
   getCurrentPositionAsync,

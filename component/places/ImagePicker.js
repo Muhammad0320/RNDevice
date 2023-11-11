@@ -4,9 +4,9 @@ import {
   PermissionStatus,
 } from "expo-image-picker";
 import { useState } from "react";
-import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../utils/color";
-import OutlinedButton from "../ui/OutLinedButton";
+import OutlinedButton from "../ui/OutlinedButton";
 
 function ImagePicker() {
   const [cameraPermisssionInfo, requestPermission] = useCameraPermissions();
