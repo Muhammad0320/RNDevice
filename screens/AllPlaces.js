@@ -5,10 +5,10 @@ function AllPlaces({ route }) {
   const [placeData, setPlaceData] = useState([]);
 
   useEffect(() => {
-    if ((route.params, placeData)) {
+    route.params &&
+      placeData &&
       setPlaceData((currentPlace) => [...currentPlace, placeData]);
-    }
-  }, [route, placeData]);
+  }, [route.params, placeData]);
 
   return <PlacesList places={placeData} />;
 }
