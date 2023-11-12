@@ -24,7 +24,11 @@ function AddPlaces() {
     setPickImage(image);
   };
 
-  const handleSavePlace = () => {};
+  const handleSavePlace = () => {
+    console.log(enteredTitle);
+    console.log(pickedLoction);
+    console.log(pickImage);
+  };
 
   return (
     <ScrollView style={styles.form}>
