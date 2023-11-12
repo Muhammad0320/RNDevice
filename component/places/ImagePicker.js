@@ -8,7 +8,7 @@ import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../utils/color";
 import OutlinedButton from "../ui/OutlinedButton";
 
-function ImagePicker() {
+function ImagePicker({ onPickImage }) {
   const [cameraPermisssionInfo, requestPermission] = useCameraPermissions();
 
   const [previewImage, setPreviewImage] = useState("");
@@ -45,6 +45,7 @@ function ImagePicker() {
       aspect: [16, 9],
     });
     setPreviewImage(image.assets[0].uri);
+    onPickImage(image.assets[0].uri);
   };
 
   let preview = <Text> No image is taken yet </Text>;
