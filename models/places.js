@@ -1,8 +1,10 @@
 class Places {
   constructor(title, address, imageUri) {
-    (this.address = address),
-      (this.title = title),
-      (this.imageUri = imageUri),
-      (this.id = `${Date.now()}-${Math.random()}`);
+    this.address = address;
+    this.title = title;
+    this.imageUri = imageUri;
+    this.id = `${Date.now()}-${Math.random()}`;
   }
 }
+
+export default Places;
