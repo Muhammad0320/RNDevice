@@ -1,8 +1,9 @@
-import { ScrollView, Text, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import ImagePicker from "./ImagePicker";
 import LocationPicker from "./LocationPicker";
 import Button from "../ui/Button";
 import Places from "../../models/places";
+import { Colors } from "../../utils/color";
 
 function PlacesForm({ onSaveData }) {
   const [enteredTitle, setEnteredTitle] = useState("");
