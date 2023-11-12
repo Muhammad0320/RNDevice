@@ -45,17 +45,6 @@ function LocationPicker({ onPickLocation }) {
   };
 
   useEffect(() => {
-    const fetchAddress = async () => {
-      if (currentLocation) {
-        await getAddress(...currentLocation);
-        onPickLocation(currentLocation);
-      }
-    };
-
-    fetchAddress();
-  }, [currentLocation, onPickLocation]);
-
-  useEffect(() => {
     if (isFocused && routes.params) {
       const { ...pickedCoords } = routes.params;
 
@@ -77,6 +66,22 @@ function LocationPicker({ onPickLocation }) {
       longitude: location.coords.longitude,
     });
   };
+
+  useEffect(() => {
+    const fetchAddress = async () => {
+      if (currentLocation) {
+        console.log(currentLocation, "Odeh");
+        const address = await getAddress(
+          currentLocation.latitude,
+          currentLocation.longitude
+        );
+
+        onPickLocation({ ...currentLocation, address });
+      }
+    };
+
+    fetchAddress();
+  }, [currentLocation, onPickLocation]);
 
   const pickOnMapHandler = () => {
     navigation.navigate("Map");
