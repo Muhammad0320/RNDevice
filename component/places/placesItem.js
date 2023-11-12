@@ -5,12 +5,16 @@ function PlacesItem({ place, onPress }) {
   const { imageUri, address, title } = place;
 
   return (
-    <Pressable onPress={onPress} android_ripple={{ color: Colors.primary400 }}>
-      <Image source={{ uri: imageUri }} />
+    <Pressable
+      onPress={onPress}
+      android_ripple={{ color: Colors.primary400 }}
+      style={({ pressed }) => [style.container, pressed && style.pressed]}
+    >
+      <Image style={style.image} source={{ uri: imageUri }} />
 
-      <View>
-        <Text> {title} </Text>
-        <Text> {address} </Text>
+      <View style={style.info}>
+        <Text style={style.title}> {title} </Text>
+        <Text style={style.address}> {address} </Text>
       </View>
     </Pressable>
   );
