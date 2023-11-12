@@ -8,6 +8,8 @@ export function getLocationPreview(lat, lng) {
 }
 
 export const getAddress = async (lat, lng) => {
+  if (!lat || !lng) return;
+
   const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_API_KEY}`;
 
   const res = await fetch(url);
