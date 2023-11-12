@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import PlacesList from "../component/places/PlacesList";
+import { useIsFocused } from "@react-navigation/native";
 
 function AllPlaces({ route }) {
   const [placeData, setPlaceData] = useState([]);
 
-  useEffect(() => {
-    route.params.place &&
-      placeData &&
-      setPlaceData((currentPlace) => [...currentPlace, route.params.place]);
-  }, [route.params.place, placeData]);
+  const isFocused = useIsFocused();
 
-  console.log(route.params.place, "olosi");
+  useEffect(() => {
+    route.params &&
+      isFocused &&
+      setPlaceData((currentPlace) => [...currentPlace, route.params.place]);
+  }, [route.params, isFocused]);
+
   console.log(placeData, "odeh");
 
   return <PlacesList places={placeData} />;
