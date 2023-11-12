@@ -14,7 +14,7 @@ import {
   useRoute,
 } from "@react-navigation/native";
 
-function LocationPicker() {
+function LocationPicker({ onPickLocation }) {
   const [currentLocation, setCurrentLocation] = useState(null);
   const navigation = useNavigation();
 
@@ -43,6 +43,10 @@ function LocationPicker() {
 
     return true;
   };
+
+  useEffect(() => {
+    onPickLocation(currentLocation);
+  }, [currentLocation, onPickLocation]);
 
   useEffect(() => {
     if (isFocused && routes.params) {
