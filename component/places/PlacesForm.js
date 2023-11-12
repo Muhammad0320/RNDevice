@@ -2,8 +2,9 @@ import { ScrollView, Text, TextInput, View } from "react-native";
 import ImagePicker from "./ImagePicker";
 import LocationPicker from "./LocationPicker";
 import Button from "../ui/Button";
+import Places from "../../models/places";
 
-function PlacesForm() {
+function PlacesForm({ onSaveData }) {
   const [enteredTitle, setEnteredTitle] = useState("");
 
   const [pickedLoction, setPickLocation] = useState(null);
@@ -22,7 +23,11 @@ function PlacesForm() {
     setPickImage(image);
   };
 
-  const handleSavePlace = () => {};
+  const handleSavePlace = () => {
+    const place = new Places(enteredTitle, pickImage, { ...pickedLoction });
+
+    onSaveData(place);
+  };
 
   return (
     <ScrollView style={styles.form}>
