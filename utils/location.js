@@ -8,19 +8,21 @@ export function getLocationPreview(lat, lng) {
 }
 
 export const getAddress = async (lat, lng) => {
-  if (!lat || !lng) return;
+  console.log(lat, lng);
 
-  const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_API_KEY}`;
+  // if (!lat || !lng) return;
 
-  const res = await fetch(url);
+  // const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_API_KEY}`;
 
-  if (!res.ok) {
-    throw new Error("Address could not be fetched");
-  }
+  // const res = await fetch(url);
 
-  const data = await res.json();
+  // if (!res.ok) {
+  //   throw new Error("Address could not be fetched");
+  // }
 
-  const address = data.results[0].formatted_address;
+  // const data = await res.json();
 
-  return address;
+  // const address = data.results[0].formatted_address;
+
+  // return address;
 };
