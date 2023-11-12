@@ -7,7 +7,7 @@ import {
   useForegroundPermissions,
 } from "expo-location";
 import { useEffect, useState } from "react";
-import getLocationPreview from "../../utils/location";
+import { getLocationPreview } from "../../utils/location";
 import {
   useIsFocused,
   useNavigation,
@@ -45,7 +45,9 @@ function LocationPicker({ onPickLocation }) {
   };
 
   useEffect(() => {
-    onPickLocation(currentLocation);
+    if (currentLocation) {
+      onPickLocation(currentLocation);
+    }
   }, [currentLocation, onPickLocation]);
 
   useEffect(() => {
