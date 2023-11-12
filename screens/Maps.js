@@ -21,21 +21,18 @@ function Maps({ navigation }) {
     setSelectedLocation({ latitude, longitude });
   };
 
-  const handlePickedLocation = useCallback(
-    () => () => {
-      if (!selectedLocation) {
-        Alert.alert(
-          "No location picked!",
-          "You have to pick a location - by tapping on the map - first"
-        );
+  const handlePickedLocation = useCallback(() => {
+    if (!selectedLocation) {
+      Alert.alert(
+        "No location picked!",
+        "You have to pick a location - by tapping on the map - first"
+      );
 
-        return;
-      }
+      return;
+    }
 
-      navigation.navigate("AddPlace", { ...selectedLocation });
-    },
-    [navigation, selectedLocation]
-  );
+    navigation.navigate("AddPlace", { ...selectedLocation });
+  }, [navigation, selectedLocation]);
 
   useLayoutEffect(() => {
     navigation.setOptions({

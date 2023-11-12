@@ -45,11 +45,9 @@ function LocationPicker() {
     const location = await getCurrentPositionAsync();
 
     setCurrentLocation({
-      lat: location.coords.latitude,
-      lng: location.coords.longitude,
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
     });
-
-    console.log(currentLocation);
   };
 
   const pickOnMapHandler = () => {
@@ -61,11 +59,13 @@ function LocationPicker() {
   );
 
   if (currentLocation) {
-    console.log(getLocationPreview(currentLocation.lat, currentLocation.lng));
     locationPreview = (
       <Image
         source={{
-          uri: getLocationPreview(currentLocation.lat, currentLocation.lng),
+          uri: getLocationPreview(
+            currentLocation.latitude,
+            currentLocation.longitude
+          ),
         }}
         style={styles.image}
       />
