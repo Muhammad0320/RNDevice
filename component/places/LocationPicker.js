@@ -6,13 +6,22 @@ import {
   getCurrentPositionAsync,
   useForegroundPermissions,
 } from "expo-location";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getLocationPreview from "../../utils/location";
-import { useNavigation } from "@react-navigation/native";
+import {
+  useIsFocused,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 
 function LocationPicker() {
   const [currentLocation, setCurrentLocation] = useState(null);
   const navigation = useNavigation();
+
+  const routes = useRoute();
+
+  const isFocused = useIsFocused();
+
   const [locationPermissioninfo, requestPermission] =
     useForegroundPermissions();
 
@@ -34,6 +43,16 @@ function LocationPicker() {
 
     return true;
   };
+
+  useEffect(() => {
+    if (isFocused && routes.params) {
+      const { ...pickedCoords } = routes.params;
+
+      console.log(pickedCoords);
+
+      setCurrentLocation(pickedCoords);
+    }
+  }, [isFocused, routes]);
 
   const locateUserHandler = async () => {
     const hasPermission = await verifyPermission();
