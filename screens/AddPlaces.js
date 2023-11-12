@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { Colors } from "../utils/color";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ImagePicker from "../component/places/ImagePicker";
 import LocationPicker from "../component/places/LocationPicker";
 import Button from "../component/ui/Button";
@@ -8,8 +8,20 @@ import Button from "../component/ui/Button";
 function AddPlaces() {
   const [enteredTitle, setEnteredTitle] = useState("");
 
+  const [pickedLoction, setPickLocation] = useState(null);
+
+  const [pickImage, setPickImage] = useState("");
+
   const handleTextInput = (enteredText) => {
     setEnteredTitle(enteredText);
+  };
+
+  const handlePickedLocation = useCallback((location) => {
+    setPickLocation(location);
+  }, []);
+
+  const handlePcikedImage = (image) => {
+    setPickImage(image);
   };
 
   const handleSavePlace = () => {};
@@ -24,8 +36,8 @@ function AddPlaces() {
           value={enteredTitle}
         />
       </View>
-      <ImagePicker />
-      <LocationPicker />
+      <ImagePicker onPickImage={handlePcikedImage} />
+      <LocationPicker onPickLocation={handlePickedLocation} />
       <Button onPress={handleSavePlace}> Add Place </Button>
     </ScrollView>
   );
