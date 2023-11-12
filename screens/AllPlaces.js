@@ -7,7 +7,7 @@ function AllPlaces({ route }) {
   useEffect(() => {
     route.params &&
       placeData &&
-      setPlaceData((currentPlace) => [...currentPlace, placeData]);
+      setPlaceData((currentPlace) => [...currentPlace, route.params]);
   }, [route.params, placeData]);
 
   return <PlacesList places={placeData} />;

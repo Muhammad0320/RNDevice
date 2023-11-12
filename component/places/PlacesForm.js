@@ -4,6 +4,7 @@ import LocationPicker from "./LocationPicker";
 import Button from "../ui/Button";
 import Places from "../../models/places";
 import { Colors } from "../../utils/color";
+import { useCallback, useState } from "react";
 
 function PlacesForm({ onSaveData }) {
   const [enteredTitle, setEnteredTitle] = useState("");

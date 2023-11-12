@@ -3,8 +3,6 @@ import PlacesItem from "./PlacesItem";
 import { Colors } from "../../utils/color";
 
 function PlacesList({ places }) {
-  console.log(places);
-
   if (!places.length) {
     return (
       <View style={styles.fallbackContainer}>
