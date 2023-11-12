@@ -3,6 +3,7 @@ import { Colors } from "../utils/color";
 import { useState } from "react";
 import ImagePicker from "../component/places/ImagePicker";
 import LocationPicker from "../component/places/LocationPicker";
+import Button from "../component/ui/Button";
 
 function AddPlaces() {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -10,6 +11,8 @@ function AddPlaces() {
   const handleTextInput = (enteredText) => {
     setEnteredTitle(enteredText);
   };
+
+  const handleSavePlace = () => {};
 
   return (
     <ScrollView style={styles.form}>
@@ -23,6 +26,7 @@ function AddPlaces() {
       </View>
       <ImagePicker />
       <LocationPicker />
+      <Button onPress={handleSavePlace}> Add Place </Button>
     </ScrollView>
   );
 }
