@@ -5,10 +5,13 @@ function AllPlaces({ route }) {
   const [placeData, setPlaceData] = useState([]);
 
   useEffect(() => {
-    route.params &&
+    route.params.place &&
       placeData &&
-      setPlaceData((currentPlace) => [...currentPlace, route.params]);
-  }, [route.params, placeData]);
+      setPlaceData((currentPlace) => [...currentPlace, route.params.place]);
+  }, [route.params.place, placeData]);
+
+  console.log(route.params.place, "olosi");
+  console.log(placeData, "odeh");
 
   return <PlacesList places={placeData} />;
 }

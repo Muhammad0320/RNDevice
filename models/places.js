@@ -4,7 +4,7 @@ class Places {
     this.coords = { lat: location.latitude, lng: location.longitude };
     this.title = title;
     this.imageUri = imageUri;
-    this.id = `${Date.now()}-${Math.random()}`;
+    this.id = `${Date.now() + Math.random()}`;
   }
 }
 
