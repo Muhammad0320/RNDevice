@@ -52,8 +52,6 @@ function LocationPicker({ onPickLocation }) {
     if (isFocused && routes.params) {
       const { ...pickedCoords } = routes.params;
 
-      console.log(pickedCoords);
-
       setCurrentLocation(pickedCoords);
     }
   }, [isFocused, routes]);
