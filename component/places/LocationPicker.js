@@ -96,7 +96,7 @@ function LocationPicker({ onPickLocation }) {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.previewContainer}>{locationPreview}</View>
       <View style={styles.buttonContainer}>
         <OutlinedButton icon="location" onPress={locateUserHandler}>
@@ -115,6 +115,10 @@ function LocationPicker({ onPickLocation }) {
 export default LocationPicker;
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 20,
+  },
+
   previewContainer: {
     flex: 1,
     justifyContent: "center",

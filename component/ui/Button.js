@@ -16,10 +16,10 @@ export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.primary500,
+    backgroundColor: Colors.primary700,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 6,
+    borderRadius: 4,
     elevation: 4,
     shadowColor: "#000",
     shadowOffset: { height: 1, width: 1 },
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
+    textAlign: "center",
     color: Colors.primary50,
     fontSize: 16,
   },
