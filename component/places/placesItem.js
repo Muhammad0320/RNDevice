@@ -24,7 +24,7 @@ export default PlacesItem;
 
 const style = StyleSheet.create({
   container: {
-    marginBottom: 12,
+    marginBottom: 8,
     overflow: "hidden",
     flexDirection: "row",
     backgroundColor: Colors.primary500,

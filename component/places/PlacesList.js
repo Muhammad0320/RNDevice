@@ -28,7 +28,7 @@ export default PlacesList;
 
 const styles = StyleSheet.create({
   container: {
-    margin: 24,
+    margin: 18,
   },
 
   fallbackContainer: {
