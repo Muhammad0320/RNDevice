@@ -2,7 +2,7 @@ import * as SQLITE from "expo-sqlite";
 
 const database = SQLITE.openDatabase("places.db");
 
-const init = () => {
+export const init = () => {
   const promise = new Promise((resolve, reject) => {
     database.transaction((tx) => {
       tx.executeSql(
@@ -15,14 +15,12 @@ const init = () => {
                     lat REAL NOT NULL,
                     lng REAL NOT NULL
 
-
-
                 ) `,
         [],
         () => {
           resolve();
         },
-        (error) => {
+        (_, error) => {
           reject(error);
         }
       );
