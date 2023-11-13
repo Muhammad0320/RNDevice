@@ -12,8 +12,8 @@ export const init = () => {
                     title TEXT NOT NULL,
                     imageUri TEXT NOT NULL,
                     address TEXT NOT NULL,
-                    lat REAL NOT NULL,
-                    lng REAL NOT NULL
+                    latitude REAL NOT NULL,
+                    longitude REAL NOT NULL
 
                 ) `,
         [],
@@ -34,13 +34,13 @@ export const insertPlace = (place) => {
   const promise = new Promise((resolve, reject) => {
     database.transaction((tx) => {
       tx.executeSql(
-        `INSERT INTO places (title, imageUri, address, lat, lng) VALUES (?, ?, ?, ?, ?)`,
+        `INSERT INTO places (title, imageUri, address, latitude, longitude) VALUES (?, ?, ?, ?, ?)`,
         [
           place.title,
           place.imageUri,
           place.address,
-          place.coords.lat,
-          place.coords.lng,
+          place.coords.latitude,
+          place.coords.longitude,
         ],
         (_, result) => {
           console.log(result);
