@@ -5,9 +5,7 @@ function AddPlaces({ navigation }) {
   const handleSaveData = async (place) => {
     await insertPlace(place);
 
-    navigation.navigate("AllPlaces", {
-      place,
-    });
+    navigation.navigate("AllPlaces");
   };
 
   return <PlacesForm onSaveData={handleSaveData} />;
