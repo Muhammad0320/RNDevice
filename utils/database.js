@@ -7,21 +7,21 @@ export const init = () => {
   const promise = new Promise((resolve, reject) => {
     database.transaction((tx) => {
       tx.executeSql(
-        ` CREATE TABLE IF NOT EXISTS places  (
-
-                    id INTERGER PRIMARY KEY NOT NULL,
-                    title TEXT NOT NULL,
-                    imageUri TEXT NOT NULL,
-                    address TEXT NOT NULL,
-                    latitude REAL NOT NULL,
-                    longitude REAL NOT NULL
-
-                ) `,
+        `CREATE TABLE IF NOT EXISTS places (
+          id INTEGER PRIMARY KEY NOT NULL,
+          title TEXT NOT NULL,
+          imageUri TEXT NOT NULL,
+          address TEXT NOT NULL,
+          latitude REAL NOT NULL,
+          longitude REAL NOT NULL
+      ) `,
         [],
         () => {
           resolve();
         },
         (_, error) => {
+          console.log(error);
+          console.log("I see 🔥");
           reject(error);
         }
       );
