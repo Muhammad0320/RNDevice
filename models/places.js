@@ -1,5 +1,5 @@
 class Places {
-  constructor(title, imageUri, location) {
+  constructor(title, imageUri, location, id) {
     this.address = location.address;
     this.coords = {
       latitude: location.latitude,
@@ -7,7 +7,7 @@ class Places {
     };
     this.title = title;
     this.imageUri = imageUri;
-    this.id = `${Date.now() + Math.random()}`;
+    this.id = id;
   }
 }
 
