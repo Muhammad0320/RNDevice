@@ -2,11 +2,11 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../utils/color";
 
 function PlacesItem({ place, onPress }) {
-  const { imageUri, address, title } = place;
+  const { imageUri, address, title, id } = place;
 
   return (
     <Pressable
-      onPress={onPress}
+      onPress={() => onPress(id)}
       android_ripple={{ color: Colors.primary400 }}
       style={({ pressed }) => [style.container, pressed && style.pressed]}
     >
