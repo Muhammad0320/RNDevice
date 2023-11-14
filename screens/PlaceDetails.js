@@ -5,8 +5,6 @@ import { Colors } from "../utils/color";
 import { fetchPlaceById } from "../utils/database";
 
 function PlaceDetails({ route, navigation }) {
-  const viewOnMapHandler = () => {};
-
   const [detailsData, setDetailsData] = useState();
 
   const { placeId } = route.params;
@@ -24,6 +22,15 @@ function PlaceDetails({ route, navigation }) {
 
     fetchDetailsData;
   }, [placeId]);
+
+  const viewOnMapHandler = () => {
+    navigation.navigate("Map", {
+      initialCoords: {
+        latitude: detailsData?.coords.latitude,
+        longitude: detailsData?.coords.longitude,
+      },
+    });
+  };
 
   if (!detailsData)
     return (
