@@ -89,3 +89,22 @@ export const fetchPlaces = () => {
 
   return promise;
 };
+
+export const fetchPlaceById = (id) => {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((tx) => {
+      tx.executeSql(
+        `SELECT  * FROM places WHERE id  = ?  `,
+        [id],
+        (_, result) => {
+          resolve(result.rows._array[0]);
+        },
+        (_, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+
+  return promise;
+};
