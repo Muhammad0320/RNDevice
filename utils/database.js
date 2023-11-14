@@ -20,8 +20,6 @@ export const init = () => {
           resolve();
         },
         (_, error) => {
-          console.log(error);
-          console.log("I see 🔥");
           reject(error);
         }
       );
@@ -32,6 +30,8 @@ export const init = () => {
 };
 
 export const insertPlace = (place) => {
+  console.log(place);
+
   const promise = new Promise((resolve, reject) => {
     database.transaction((tx) => {
       tx.executeSql(
@@ -49,6 +49,7 @@ export const insertPlace = (place) => {
           resolve(result);
         },
         (_, error) => {
+          console.log("I see 🔥");
           reject(error);
         }
       );
