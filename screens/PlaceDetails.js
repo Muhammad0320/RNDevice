@@ -13,11 +13,11 @@ function PlaceDetails({ route }) {
   }, [placeId]);
 
   return (
-    <ScrollView>
-      <Image />
-      <View>
-        <View>
-          <Text> Address </Text>
+    <ScrollView style={styles.screen}>
+      <Image style={styles.image} />
+      <View style={styles.textContainer}>
+        <View style={styles.addressContainer}>
+          <Text style={styles.address}> Address </Text>
         </View>
         <OutlinedButton icon="map" onPress={viewOnMapHandler}>
           {" "}
