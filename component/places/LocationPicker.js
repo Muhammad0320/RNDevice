@@ -46,9 +46,9 @@ function LocationPicker({ onPickLocation }) {
 
   useEffect(() => {
     if (isFocused && routes.params) {
-      const { ...pickedCoords } = routes.params;
+      const { pickedCoords } = routes.params;
 
-      setCurrentLocation(pickedCoords);
+      setCurrentLocation(...pickedCoords);
     }
   }, [isFocused, routes]);
 
@@ -70,7 +70,6 @@ function LocationPicker({ onPickLocation }) {
   useEffect(() => {
     const fetchAddress = async () => {
       if (currentLocation) {
-        console.log(currentLocation, "Odeh");
         const address = await getAddress(
           currentLocation.latitude,
           currentLocation.longitude
